@@ -1,0 +1,15 @@
+Write your observations in a text file.
+>>> After deleting Vote/ worker Pod one by one. I was able to access the voting app and resulting app there was no impact on both the applications.
+>>>But after deleting the DB pod, it took the worker, resulting in an auto-restart because both were interconnected with each other.
+Also on the result app, all the old data was lost and it started showing a new result.
+
+
+
+
+WHY result app STOPPED working after db pod stop ?
+>> The DB pod is the only one who stores the data, which means the entire database was inside the DB pod.
+so the moment we stopped the DB, the data was lost. So the resulting pod also stops showing results.
+
+
+HOW YOU MADE THE RESULT POD work ?
+To make the result pod work, we need to restart the db pod, so after the restart, it's automatically restart the resulting and worker pod. 
